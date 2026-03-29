@@ -1,0 +1,6 @@
+[submodule "MVVM.ViewModel.Proxy"]
+	path = MVVM.ViewModel.Proxy
+	url = https://github.com/BruceMellows/MVVM.ViewModel.Proxy.git
+[submodule "EventuallyCorrect"]
+	path = EventuallyCorrect
+	url = https://github.com/BruceMellows/EventuallyCorrect.git
