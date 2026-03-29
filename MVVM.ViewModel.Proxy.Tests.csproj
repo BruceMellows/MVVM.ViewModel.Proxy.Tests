@@ -27,4 +27,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="git submodule update --init --recursive --remote" />
+  </Target>
+
 </Project>
