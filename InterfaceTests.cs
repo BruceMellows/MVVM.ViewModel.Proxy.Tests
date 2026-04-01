@@ -122,7 +122,7 @@ public sealed class InterfaceTests
 	{
 		// Arrange
 		var proxy = new ViewModelProxyWithOnChanging();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 		var callCount = 0;
 		vm.PropertyChanging += (s, e) =>
 		{
@@ -142,7 +142,7 @@ public sealed class InterfaceTests
 	{
 		// Arrange
 		var proxy = new ViewModelProxyWithOnChanging();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 		var callCount = 0;
 		vm.PropertyChanging += (s, e) =>
 		{
@@ -163,7 +163,7 @@ public sealed class InterfaceTests
 	{
 		// Arrange
 		var proxy = new ViewModelProxyWithOnChanged();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 		var callCount = 0;
 		vm.PropertyChanged += (s, e) =>
 		{
@@ -183,7 +183,7 @@ public sealed class InterfaceTests
 	{
 		// Arrange
 		var proxy = new ViewModelProxyWithOnChanged();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 		var callCount = 0;
 		vm.PropertyChanged += (s, e) =>
 		{
@@ -204,7 +204,7 @@ public sealed class InterfaceTests
 	{
 		// Arrange
 		var proxy = new ViewModelProxyWithOnChangingAndChanged();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 		var changingCallCount = 0;
 		var changedCallCount = 0;
 		vm.PropertyChanged += (s, e) =>
@@ -232,7 +232,7 @@ public sealed class InterfaceTests
 	{
 		// Arrange
 		var proxy = new ViewModelProxyWithOnChangingAndChanged();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 		var changingCallCount = 0;
 		var changedCallCount = 0;
 		vm.PropertyChanged += (s, e) =>
@@ -263,7 +263,7 @@ public sealed class InterfaceTests
 		var proxy = new ViewModelProxyWithDifferentEventingInterfaces();
 
 		// Act/Assert
-		Assert.Throws<MissingEventInterfaceException>(() => proxy.ViewModel.CollectionChanged += (s, e) => { });
+		Assert.Throws<MissingEventInterfaceException>(() => proxy.Proxied.CollectionChanged += (s, e) => { });
 	}
 
 	[Test]
@@ -276,10 +276,10 @@ public sealed class InterfaceTests
 
 	private static object GetViewModel(object proxy)
 	{
-		var viewModelPropertyInfo = proxy.GetType().GetProperty("ViewModel", BindingFlags.Public | BindingFlags.Instance);
+		var viewModelPropertyInfo = proxy.GetType().GetProperty("Proxied", BindingFlags.Public | BindingFlags.Instance);
 		if (viewModelPropertyInfo is null)
 		{
-			throw new InvalidOperationException($"Property 'ViewModel' not found in type '{proxy.GetType().FullName}'.");
+			throw new InvalidOperationException($"Property 'Proxied' not found in type '{proxy.GetType().FullName}'.");
 		}
 		return viewModelPropertyInfo.GetGetMethod()!.Invoke(proxy, [])!;
 	}
