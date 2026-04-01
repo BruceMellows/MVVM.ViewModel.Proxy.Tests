@@ -31,7 +31,7 @@ public sealed class DefaultAttributeTests
 	{
 		// Arrange
 		var proxy = new TestViewModelProxy();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 
 		// Act/Assert
 		Assert.That(vm.Test, Is.EqualTo("test"));
@@ -42,7 +42,7 @@ public sealed class DefaultAttributeTests
 	{
 		// Arrange
 		var proxy = new TestViewModelProxy();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 
 		// Act/Assert
 		Assert.That(vm.Zero, Is.EqualTo(0));
@@ -53,7 +53,7 @@ public sealed class DefaultAttributeTests
 	{
 		// Arrange
 		var proxy = new TestViewModelProxy();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 
 		// Act/Assert
 		Assert.That(vm.OnePointFive, Is.EqualTo(1.5));
@@ -64,7 +64,7 @@ public sealed class DefaultAttributeTests
 	{
 		// Arrange
 		var proxy = new TestViewModelProxy();
-		var vm = proxy.ViewModel;
+		var vm = proxy.Proxied;
 
 		// Act/Assert
 		Assert.That(vm.EpochParty, Is.EqualTo(new DateTime(1999, 12, 31)));
