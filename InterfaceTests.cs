@@ -356,16 +356,20 @@ public sealed class InterfaceTests
 	{
 	}
 
-	public sealed class ViewModelProxyWithOnChanged : ViewModelProxy<IViewModelWithOnChanged>
+	public sealed class ViewModelProxyWithOnChanged : ViewModelProxy<IViewModelWithOnChanged>, INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler? PropertyChanged;
 	}
 
-	public sealed class ViewModelProxyWithOnChanging : ViewModelProxy<IViewModelWithOnChanging>
+	public sealed class ViewModelProxyWithOnChanging : ViewModelProxy<IViewModelWithOnChanging>, INotifyPropertyChanging
 	{
+		public event PropertyChangingEventHandler? PropertyChanging;
 	}
 
-	public sealed class ViewModelProxyWithOnChangingAndChanged : ViewModelProxy<IViewModelWithOnChangingAndChanged>
+	public sealed class ViewModelProxyWithOnChangingAndChanged : ViewModelProxy<IViewModelWithOnChangingAndChanged>, INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		public event PropertyChangingEventHandler? PropertyChanging;
+		public event PropertyChangedEventHandler? PropertyChanged;
 	}
 
 	public sealed class ViewModelWithPropertyOnlyInterface : ViewModelProxy<IViewModelWithPropertyOnlyInterface>
